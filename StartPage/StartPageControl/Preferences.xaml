@@ -1,0 +1,26 @@
+﻿<Window x:Class="StartPageControl.Preferences"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Preferences" Height="236" Width="656"
+        Loaded="OnLoaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Margin="10" Text="Для добавления проекта введиде в отдельную строку Название|Полный путь к директории проекта"></TextBlock>
+        <TextBox Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="textBoxProjects" Grid.ColumnSpan="2" AcceptsReturn="True" />
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Stretch" Grid.ColumnSpan="2">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Margin" Value="0, 0, 10, 0" />
+                    <Setter Property="MinWidth" Value="60" />
+                    <Setter Property="HorizontalAlignment" Value="Right" />
+                </Style>
+            </StackPanel.Resources>
+            <Button x:Name="btnSave" Click="SavePreferences_Click" Content="Save"/>
+            <Button x:Name="btnCancel" Click="Cancel_Click" Content="Cancel"/>
+        </StackPanel>
+    </Grid>
+</Window>
