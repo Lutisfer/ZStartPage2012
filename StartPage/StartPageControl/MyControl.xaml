@@ -12,9 +12,9 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Background="{DynamicResource {x:Static vsfx:VsBrushes.StartPageBackgroundKey}}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <Grid.RowDefinitions>                
+            <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />                
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -39,29 +39,25 @@
                                 <DataTemplate>
                                     <Grid>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="240"/>
                                             <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="10"/>
                                         </Grid.ColumnDefinitions>
                                         <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                                        <vs:ImageButton
+                                            <vs:ImageButton
                                 Grid.Row="0"
                                 x:Name="OpenSolution" Click="OpenSolution_Click" Margin="5"
-                                                Grid.Column="0"                                
+                                                Grid.Column="0"      
+                                Content="{Binding Path=DisplayName}"
                                 CommandParameter="{Binding FullPath}"
                                 Style="{DynamicResource StartPage.ProjectCommand.ButtonStyle}"
                                 ImageNormal="pack://application:,,,/Microsoft.VisualStudio.Shell.StartPage;component/Images/StartPage/OpenProject.png"
                                 ImageHover="pack://application:,,,/Microsoft.VisualStudio.Shell.StartPage;component/Images/StartPage/OpenProjectMouseOver.png"
                                 ImagePressed="pack://application:,,,/Microsoft.VisualStudio.Shell.StartPage;component/Images/StartPage/OpenProjectMouseDown.png">
-                                                <DataTemplate>
-                                                    <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                                                    <TextBlock Text="{Binding Path= FullPath}" />
-                                                    <TextBlock Text="{Binding Path= FullPath}" />
-                                                    </StackPanel>
-                                                </DataTemplate>
-                                                    <vs:ImageButton.ToolTip>
-                                                <TextBlock Text="{Binding Path=FullPath}" />
-                                            </vs:ImageButton.ToolTip>
-                                            </vs:ImageButton>                                            
+                                                <vs:ImageButton.ToolTip>
+                                                    <TextBlock Text="{Binding Path=FullPath}" />
+                                                </vs:ImageButton.ToolTip>
+                                            </vs:ImageButton>
+                                            <TextBlock Text="{Binding Path=FullPath}" Foreground="#FFB1B1B1" FontSize="10"/>
                                         </StackPanel>
 
                                     </Grid>
