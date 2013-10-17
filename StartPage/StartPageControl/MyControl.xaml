@@ -34,7 +34,9 @@
                 </TabControl.ItemTemplate>
                 <TabControl.ContentTemplate>
                     <DataTemplate>
-                        <ItemsControl Background="Transparent" Name="solutionsListBox" ItemsSource="{Binding Path=Solutions}">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <ItemsControl Background="Transparent" Name="solutionsListBox" ItemsSource="{Binding Path=Solutions}" 
+                                      VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <Grid>
@@ -63,6 +65,7 @@
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
+                        </ScrollViewer>
                     </DataTemplate>
                 </TabControl.ContentTemplate>
             </TabControl>
