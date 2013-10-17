@@ -34,8 +34,8 @@
                 </TabControl.ItemTemplate>
                 <TabControl.ContentTemplate>
                     <DataTemplate>
-                        <ListBox Background="Transparent" Name="solutionsListBox" ItemsSource="{Binding Path=Solutions}">
-                            <ListBox.ItemTemplate>
+                        <ItemsControl Background="Transparent" Name="solutionsListBox" ItemsSource="{Binding Path=Solutions}">
+                            <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <Grid>
                                         <Grid.ColumnDefinitions>
@@ -59,11 +59,10 @@
                                             </vs:ImageButton>
                                             <TextBlock Text="{Binding Path=FullPath}" Foreground="#FFB1B1B1" FontSize="10"/>
                                         </StackPanel>
-
                                     </Grid>
                                 </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
                     </DataTemplate>
                 </TabControl.ContentTemplate>
             </TabControl>
