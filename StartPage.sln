@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartPage", "StartPage\StartPage\StartPage.csproj", "{9A548856-C0C5-4FD1-8537-828A703968E9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartPageControl", "StartPage\StartPageControl\StartPageControl.csproj", "{8DE3B5BB-E124-4C00-9BEF-D23FBE7B644C}"
