@@ -61,6 +61,15 @@ namespace StartPageControl.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Configuration.
+        /// </summary>
+        public static string MainControl_ConfigurationButtonText {
+            get {
+                return ResourceManager.GetString("MainControl_ConfigurationButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string PreferencesWindow_CancelButtonText {

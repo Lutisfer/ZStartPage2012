@@ -47,7 +47,6 @@ namespace StartPageControl
         {
             if (!_IsLoaded)
             {
-                //StartPageSettings.StoreString(PROJECTS_SETTING_NAME, "СПО ССП ГСИ|G:\\E\\Work\\SPO-SSP\\SRC_NEW;СПО КИ|G:\\E\\Work\\SPO_KI\\SRC_NEW");
                 _IsLoaded = true;
                 LoadProjects();
             }
