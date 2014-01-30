@@ -7,6 +7,7 @@
              xmlns:vs="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.11.0"
              xmlns:vsfxim="clr-namespace:Microsoft.VisualStudio.Shell;assembly=Microsoft.VisualStudio.Shell.Immutable.11.0"
              xmlns:vsfx="clr-namespace:Microsoft.VisualStudio.Shell;assembly=Microsoft.VisualStudio.Shell.11.0"
+             xmlns:res="clr-namespace:StartPageControl.Properties"
              Loaded="OnLoaded"    
              mc:Ignorable="d"     
              d:DesignHeight="300" d:DesignWidth="300">
@@ -105,7 +106,7 @@
             <Label HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Content="" x:Name="lblStatus" Visibility="Visible" />
             <vs:ImageButton Grid.Row="1" Grid.Column="0" 
                     Margin="0, 0, 5, 0"
-                    x:Name="ConfigurationBtn" Content="Configuration" 
+                    x:Name="ConfigurationBtn" Content="{x:Static res:Resources.MainControl_ConfigurationButtonText}" 
                     Click="ConfigurationBtn_Click" HorizontalAlignment="Right"
                     Style="{DynamicResource StartPage.ProjectCommand.ButtonStyle}"/>
         </Grid>
