@@ -30,7 +30,7 @@ namespace StartPageControl
         private const string SOLUTION_FILE_MASK = "*.sln";
         private const string PROJECTS_SETTING_NAME = "Projects";
         private const char PROJECTS_DEVIDER_CHAR = ';';
-        private const char PROJECT_PREFS_DEVIDER_CHAR = '|';
+        private const char PROJECT_PREFS_DIVIDER_CHAR = '|';
 
         private string _CurrentPreferences = string.Empty;
 
@@ -74,7 +74,7 @@ namespace StartPageControl
             string[] projectStrings = projectsSetting.Split(PROJECTS_DEVIDER_CHAR);
             foreach (string elProject in projectStrings)
             {
-                string[] projectSettings = elProject.Split(PROJECT_PREFS_DEVIDER_CHAR);
+                string[] projectSettings = elProject.Split(PROJECT_PREFS_DIVIDER_CHAR);
                 if (projectSettings.Length < 2)
                 {
                     continue;
