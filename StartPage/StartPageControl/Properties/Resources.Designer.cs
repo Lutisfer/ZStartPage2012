@@ -70,6 +70,51 @@ namespace StartPageControl.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Solution file not found.
+        /// </summary>
+        public static string MainControl_MissingSolutionMessage {
+            get {
+                return ResourceManager.GetString("MainControl_MissingSolutionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating GUI....
+        /// </summary>
+        public static string MainControl_StatusCreatingGui {
+            get {
+                return ResourceManager.GetString("MainControl_StatusCreatingGui", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Finished.
+        /// </summary>
+        public static string MainControl_StatusFinished {
+            get {
+                return ResourceManager.GetString("MainControl_StatusFinished", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting projects settings....
+        /// </summary>
+        public static string MainControl_StatusGetSettings {
+            get {
+                return ResourceManager.GetString("MainControl_StatusGetSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scanning for solutions in project.
+        /// </summary>
+        public static string MainControl_StatusScanningForSolutions {
+            get {
+                return ResourceManager.GetString("MainControl_StatusScanningForSolutions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string PreferencesWindow_CancelButtonText {

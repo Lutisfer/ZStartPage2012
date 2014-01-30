@@ -53,9 +53,7 @@ namespace StartPageControl
         }
 
         private void LoadProjects()
-        {
-            //lblStatus.Content = "Scanning Folder...";
-            //lblStatus.Visibility = System.Windows.Visibility.Visible;                
+        {              
             _CurrentPreferences = StartPageSettings.RetrieveString(PROJECTS_SETTING_NAME);
             lblStatus.Visibility = System.Windows.Visibility.Visible;
             BackgroundWorker bw = new BackgroundWorker();
@@ -81,17 +79,17 @@ namespace StartPageControl
                 }
                 projects.Add(new Project() { ProjectName = projectSettings[0], ProjectPath = projectSettings[1] });
             }
-
+            
             return projects;
         }
 
         void CollectSolutions(object sender, DoWorkEventArgs e)
         {
-            ((BackgroundWorker)sender).ReportProgress(0, "Getting projects settings...");
+            ((BackgroundWorker)sender).ReportProgress(0, Properties.Resources.MainControl_StatusGetSettings);
             _Projects = GetProjects();
             foreach (Project elProject in _Projects)
             {
-                ((BackgroundWorker)sender).ReportProgress(0, string.Format("Scanning for solutions in project {0}...", elProject.ProjectName));
+                ((BackgroundWorker)sender).ReportProgress(0, string.Format("{0} {1}...", Properties.Resources.MainControl_StatusScanningForSolutions, elProject.ProjectName));
                 var projectSolutions = LoadSolutionsForProject(elProject);
                 if(elProject.Solutions == null)
                 {
@@ -163,9 +161,9 @@ namespace StartPageControl
 
         void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            lblStatus.Content = "Creating GUI...";
+            lblStatus.Content = Properties.Resources.MainControl_StatusCreatingGui;
             CreateProjectTabs();
-            lblStatus.Content = "Finished";
+            lblStatus.Content = Properties.Resources.MainControl_StatusFinished;
             lblStatus.Visibility = System.Windows.Visibility.Hidden;
         }
 
@@ -194,7 +192,7 @@ namespace StartPageControl
             string path = btn.CommandParameter.ToString();
             if (!File.Exists(path))
             {
-                MessageBox.Show("This Solution is missing");
+                MessageBox.Show(Properties.Resources.MainControl_MissingSolutionMessage);
             }
             else
             {

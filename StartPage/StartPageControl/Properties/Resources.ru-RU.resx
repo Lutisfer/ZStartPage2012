@@ -120,6 +120,21 @@
   <data name="MainControl_ConfigurationButtonText" xml:space="preserve">
     <value>Настройки</value>
   </data>
+  <data name="MainControl_MissingSolutionMessage" xml:space="preserve">
+    <value>Solution-файл не найден</value>
+  </data>
+  <data name="MainControl_StatusCreatingGui" xml:space="preserve">
+    <value>Построение интерфейса</value>
+  </data>
+  <data name="MainControl_StatusFinished" xml:space="preserve">
+    <value>Завершено</value>
+  </data>
+  <data name="MainControl_StatusGetSettings" xml:space="preserve">
+    <value>Получение настроек проектов...</value>
+  </data>
+  <data name="MainControl_StatusScanningForSolutions" xml:space="preserve">
+    <value>Поиск solution-файлов для проекта</value>
+  </data>
   <data name="PreferencesWindow_CancelButtonText" xml:space="preserve">
     <value>Отмена</value>
   </data>
