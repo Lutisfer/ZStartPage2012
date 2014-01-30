@@ -17,6 +17,7 @@ using EnvDTE80;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using System.IO;
+using Microsoft.Internal.VisualStudio.PlatformUI;
 
 namespace StartPageControl
 {
@@ -175,6 +176,19 @@ namespace StartPageControl
             solutionsTabPane.SelectedIndex = 0;
         }
 
+        public static DTE2 GetDTE(object dataContext)
+        {
+            DataSource source = dataContext as DataSource;
+            foreach (IPropertyDescription property in source.Properties)
+            {
+                if (property.Name == "DTE")
+                {
+                    return source.GetValue("DTE") as DTE2;
+                }
+            }
+            return null;
+        }
+
         private void OpenSolution_Click(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
@@ -185,7 +199,8 @@ namespace StartPageControl
             }
             else
             {
-                ServiceProvider serviceProvider = new ServiceProvider((Microsoft.VisualStudio.OLE.Interop.IServiceProvider)Utilities.GetDTE(DataContext));
+                var dte = GetDTE(DataContext);
+                ServiceProvider serviceProvider = new ServiceProvider((Microsoft.VisualStudio.OLE.Interop.IServiceProvider)dte);
                 IVsSolution solution = serviceProvider.GetService(typeof(SVsSolution)) as IVsSolution;
 
                 solution.OpenSolutionFile((uint)__VSSLNOPENOPTIONS.SLNOPENOPT_Silent, path);
@@ -221,7 +236,7 @@ namespace StartPageControl
             {
                 if (_settings == null)
                 {
-                    DTE2 dte = Utilities.GetDTE(DataContext);
+                    DTE2 dte = GetDTE(DataContext);
                     ServiceProvider serviceProvider = Utilities.GetServiceProvider(dte);
                     _settings = new StartPageSettings(serviceProvider);
                 }

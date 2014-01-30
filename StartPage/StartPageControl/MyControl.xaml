@@ -4,13 +4,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"              
-             xmlns:vsfx="clr-namespace:Microsoft.VisualStudio.Shell;assembly=Microsoft.VisualStudio.Shell.10.0"
-             xmlns:sp="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.StartPage"
-             xmlns:vs="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.10.0"             
+             xmlns:vs="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.11.0"
+             xmlns:vsfxim="clr-namespace:Microsoft.VisualStudio.Shell;assembly=Microsoft.VisualStudio.Shell.Immutable.11.0"
+             xmlns:vsfx="clr-namespace:Microsoft.VisualStudio.Shell;assembly=Microsoft.VisualStudio.Shell.11.0"
              Loaded="OnLoaded"    
              mc:Ignorable="d"     
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Background="{DynamicResource {x:Static vsfx:VsBrushes.StartPageBackgroundKey}}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    <Grid Background="{DynamicResource {x:Static vs:EnvironmentColors.StartPageTabBackgroundBrushKey}}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
@@ -19,19 +19,52 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <TabControl Background="Transparent" Grid.Row="0" Grid.Column="0" x:Name="solutionsTabPane" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                <TabControl.ItemTemplate>
-                    <DataTemplate>
-                        <DataTemplate.Resources>
-                            <Style TargetType="TabItem">
-                                <Setter Property="FontSize" Value="16"/>
-                                <Setter Property="HorizontalAlignment" Value="Center"/>
-                                <Setter Property="Content" Value="{Binding Path=ProjectName}" />
-                            </Style>
-                        </DataTemplate.Resources>
-                        <TextBlock Text="{Binding Path=ProjectName}"/>
-                    </DataTemplate>
-                </TabControl.ItemTemplate>
+            
+            <TabControl  Background="Transparent" Grid.Row="0" Grid.Column="0" x:Name="solutionsTabPane" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <TabControl.Resources>
+                    <Style TargetType="TabControl">
+                        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static vs:EnvironmentColors.FileTabSelectedBorderBrushKey}}" />
+                    </Style>
+                    <Style TargetType="TabItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="TabItem">
+                                    <Grid Name="Panel">
+                                        <ContentPresenter x:Name="ContentSite"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        ContentSource="Header"
+                                        Margin="10,2">
+                                            <ContentPresenter.ContentTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding Path=ProjectName}"/>
+                                                </DataTemplate>
+                                            </ContentPresenter.ContentTemplate>
+                                        </ContentPresenter>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter TargetName="Panel" Property="Background" Value="{DynamicResource {x:Static vs:EnvironmentColors.FileTabSelectedBackgroundBrushKey}}" />
+                                            <Setter TargetName="Panel" Property="TextBlock.Foreground" Value="{DynamicResource {x:Static vs:EnvironmentColors.FileTabSelectedTextBrushKey}}" />
+                                        </Trigger>
+                                        <Trigger Property="IsSelected" Value="False">
+                                            <Setter TargetName="Panel" Property="Background" Value="{DynamicResource {x:Static vs:EnvironmentColors.FileTabInactiveDocumentBorderBackgroundBrushKey}}" />
+                                            <Setter TargetName="Panel" Property="TextBlock.Foreground" Value="{DynamicResource {x:Static vs:EnvironmentColors.FileTabInactiveTextBrushKey}}" />
+                                        </Trigger>
+                                        <MultiTrigger>
+                                            <MultiTrigger.Conditions>
+                                                <Condition Property="IsMouseOver" Value="True" />
+                                                <Condition Property="IsSelected" Value="False" />
+                                            </MultiTrigger.Conditions>
+                                            <Setter TargetName="Panel" Property="Background" Value="{DynamicResource {x:Static vs:EnvironmentColors.FileTabButtonHoverInactiveBrushKey}}" />
+                                            <Setter TargetName="Panel" Property="TextBlock.Foreground" Value="{DynamicResource {x:Static vs:EnvironmentColors.FileTabProvisionalHoverForegroundBrushKey}}" />
+                                        </MultiTrigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </TabControl.Resources>
                 <TabControl.ContentTemplate>
                     <DataTemplate>
                         <ScrollViewer VerticalScrollBarVisibility="Auto">
@@ -52,9 +85,9 @@
                                 Content="{Binding Path=DisplayName}"
                                 CommandParameter="{Binding FullPath}"
                                 Style="{DynamicResource StartPage.ProjectCommand.ButtonStyle}"
-                                ImageNormal="pack://application:,,,/Microsoft.VisualStudio.Shell.StartPage;component/Images/StartPage/OpenProject.png"
-                                ImageHover="pack://application:,,,/Microsoft.VisualStudio.Shell.StartPage;component/Images/StartPage/OpenProjectMouseOver.png"
-                                ImagePressed="pack://application:,,,/Microsoft.VisualStudio.Shell.StartPage;component/Images/StartPage/OpenProjectMouseDown.png">
+                                ImageNormal="pack://application:,,,/Microsoft.VisualStudio.Shell.11.0;component/UI/Images/OpenProject.png"
+                                ImageHover="pack://application:,,,/Microsoft.VisualStudio.Shell.11.0;component/UI/Images/OpenProjectMouseOver.png"
+                                ImagePressed="pack://application:,,,/Microsoft.VisualStudio.Shell.11.0;component/UI/Images/OpenProjectMouseDown.png">
                                                 <vs:ImageButton.ToolTip>
                                                     <TextBlock Text="{Binding Path=FullPath}" />
                                                 </vs:ImageButton.ToolTip>
@@ -74,8 +107,7 @@
                     Margin="0, 0, 5, 0"
                     x:Name="ConfigurationBtn" Content="Configuration" 
                     Click="ConfigurationBtn_Click" HorizontalAlignment="Right"
-                    Style="{DynamicResource StartPage.ProjectCommand.ButtonStyle}"
-/>
+                    Style="{DynamicResource StartPage.ProjectCommand.ButtonStyle}"/>
         </Grid>
     </Grid>
 </UserControl>
